@@ -1,0 +1,91 @@
+/* .................
+    GLOBAL STYLES */
+body {
+    background-color: black;
+}
+/* ........................... */
+
+/* .................
+    HEADER STYLES */
+h1 {
+    font-family: Arial;
+    font-size: 20px;
+    color: white;
+}
+
+h2 {
+    background-color: white;
+    font-family: Arial;
+    font-size: 16px;
+    color: black;
+    margin-bottom: 0;
+    padding-top: 10px;
+    padding-left: 10px;
+    width: 220px;
+}
+/* ......................... */
+
+/* .................
+    NAVBAR STYLES */
+ul {
+    background-color: white;
+    font-family: Arial;
+    font-size: 14px;
+    color: black;
+    margin: 0;
+    padding: 15px;
+    overflow: hidden;
+    width: 200px;
+    list-style-type: none;
+    list-style-position: inside;
+}
+
+li a {
+    display: block;
+    padding: 14px 20px;
+    color: grey;
+    text-decoration: none;
+    text-align: center;
+}
+
+ul li a {
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+ul li a:hover {
+    background-color: black;
+    color: white;
+}
+/* ........................... */
+
+/* ...............
+    FORM STYLES */
+input {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 15px;
+    background-color: white;
+    color: black;
+    border: none;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+label {
+    display: block;
+    color: white;
+    margin-bottom: 5px;
+    font-family: Arial;
+}
+/* ............... */
+
+/* ....................
+    PARAGRAPH STYLES */
+p {
+    font-family: Arial;
+    font-size: 14px;
+    color: white;
+}
+/* .................... */
