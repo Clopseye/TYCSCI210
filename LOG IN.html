@@ -6,14 +6,43 @@
     </head>
 
     <body>
-        <h1>Log In</h1>
 
-        <form>
-            <label for="fname">First Name</label>
-            <input type="text" id="fname" name="fname" placeholder="Enter your name...">
+        <div class="wrapper" 
+        style="display: flex; justify-content: center; align-items: center; min-height: 100vh;">
+            
+            <form action="index.html">
+                <h1>Login</h1>
 
-            <button type="submit" class="login-bvtn">Submit</button>
-        </form> 
+                <div class="input-box">
+                    <label for="fname">Full Name</label>
+                    <input type="text" id="fname" name="fname" placeholder="Enter your first name"
+                    required>
 
+                    <input type="text" id="lname" name="lname" placeholder="Enter your last name"
+                    required>
+                </div>
+
+                <div class="input-box">
+                    <label for="password">Password</label>
+                    <input type="password" placeholder="Password"
+                    required>
+                </div>
+                
+                <div class="remember-forgot" 
+                style="display: flex; align-items: center; gap: 8px;">
+                    
+                    <label 
+                    style="display: inline; margin: 0;"><input type="checkbox" 
+                    style="width: auto; margin: 0;"> Remember me</label>
+                    <a href="#" style="color: grey">Forgot password?</a>
+                </div>
+
+                <button type="submit" class="login-btn">Submit</button>
+                <div class="register-link">
+                    <p>Don't have an account? <a href="#" style="color: grey">Register</a></p>
+                </div>
+            </form> 
+        </div>
+        
     </body>
 </html>
