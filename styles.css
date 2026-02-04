@@ -168,7 +168,7 @@ form {
 }
 /* ................. */
 
-/* ...................
+/* .....................
     Home Image Styles */
 .hero {
     position: relative;
@@ -180,7 +180,7 @@ form {
     align-items: center;
     justify-content: center;
     color: white;
-    margin-top: 64px; /* clear fixed header */
+    margin-top: 64px;
 }
 
 .hero-overlay {
@@ -201,4 +201,5 @@ form {
 .hero p {
     margin: 0;
     color: #ddd;
+
 }
