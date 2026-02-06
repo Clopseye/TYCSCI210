@@ -52,6 +52,15 @@ h2 {
     color: black;
 }
 
+.brand:hover {
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
 .navbar ul {
     display: flex;
     gap: 12px;
@@ -168,7 +177,7 @@ form {
 }
 /* ................. */
 
-/* .....................
+/* ...................
     Home Image Styles */
 .hero {
     position: relative;
@@ -180,7 +189,7 @@ form {
     align-items: center;
     justify-content: center;
     color: white;
-    margin-top: 64px;
+    margin-top: 64px; /* clear fixed header */
 }
 
 .hero-overlay {
@@ -201,5 +210,4 @@ form {
 .hero p {
     margin: 0;
     color: #ddd;
-
 }
