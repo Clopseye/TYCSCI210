@@ -4,8 +4,6 @@
         <title>Products</title>
         <link rel="stylesheet" href="styles.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-
-        <script src="navbarhide.js"></script>
     </head>
 
     <body>
@@ -16,7 +14,7 @@
                 .then(function(response){ return response.text(); })
                 .then(function(html){ 
                     document.getElementById('nav-placeholder').innerHTML = html;
-                    // Load navbarhide.js after navbar is in DOM
+                    // Load navbarhide.js
                     var script = document.createElement('script');
                     script.src = 'navbarhide.js';
                     document.head.appendChild(script);
@@ -24,9 +22,55 @@
         </script>
 
         <main class="page-content">
-            <h1>Product Page</h1>
-            <p>Page body</p>
+            <div class="hero">
+                <div class="hero-overlay">
+                    <h1>Products</h1>
+                </div>
+            </div>
+
+            <section class="products">
+                <div class="product-grid">
+                    <article class="product-card">
+
+                        <img src="images/placeholder.jpg" alt="Product 1">
+                        <h2>Product 1</h2>
+                        <p>Product Description.</p>
+                    </article>
+
+                    <article class="product-card">
+                        <img src="images/placeholder.jpg" alt="Product 2">
+                        <h2>Product 2</h2>
+                        <p>Product Description.</p>
+                    </article>
+
+                    <article class="product-card">
+                        <img src="images/placeholder.jpg" alt="Product 3">
+                        <h2>Product 3</h2>
+                        <p>Product Description.</p>
+
+                    </article>
+                </div>
+            </section>
         </main>
-        
+        <script>
+            $(document).ready(function() {
+                $('.product-card').click(function() {
+                    const $this = $(this);
+
+                    // Reset if card is expanded
+                    if ($this.hasClass('is-expanded')) {
+                        $('.product-card').removeClass('is-hidden is-expanded');
+                        $('.hero').css('display', 'flex'); // Show hero again
+                    } 
+
+                    // if not, expand card and hide others
+                    else {
+                        $this.addClass('is-expanded');
+                        $this.siblings().addClass('is-hidden');
+                        $('.hero').css('display', 'none'); // Hide hero to make room
+                    }
+                });
+            });
+        </script>
     </body>
 </html>

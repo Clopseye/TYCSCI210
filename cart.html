@@ -16,7 +16,7 @@
                 .then(function(response){ return response.text(); })
                 .then(function(html){ 
                     document.getElementById('nav-placeholder').innerHTML = html;
-                    // Load navbarhide.js after navbar is in DOM
+                    // Load navbarhide.js
                     var script = document.createElement('script');
                     script.src = 'navbarhide.js';
                     document.head.appendChild(script);
@@ -25,7 +25,8 @@
 
         <main class="page-content">
             <h1>Cart</h1>
-            <p>Page body</p>
+            <p>When a product is added to cart it will show up here.</p>
+            <p>This page leads to checkout.</p>
         </main>
         
     </body>

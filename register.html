@@ -16,7 +16,7 @@
                 .then(function(response){ return response.text(); })
                 .then(function(html){ 
                     document.getElementById('nav-placeholder').innerHTML = html;
-                    // Load navbarhide.js after navbar is in DOM
+                    // Load navbarhide.js
                     var script = document.createElement('script');
                     script.src = 'navbarhide.js';
                     document.head.appendChild(script);
@@ -24,8 +24,7 @@
         </script>
 
         <main class="page-content">
-        <div class="wrapper"
-        style="display: flex; justify-content: center; align-items: center; min-height: 100vh;">
+        <div class="wrapper">
             
             <form action="login.html">
                 <h1>Register</h1>

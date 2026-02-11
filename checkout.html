@@ -16,7 +16,7 @@
                 .then(function(response){ return response.text(); })
                 .then(function(html){ 
                     document.getElementById('nav-placeholder').innerHTML = html;
-                    // Load navbarhide.js after navbar is in DOM
+                    // Load navbarhide.js
                     var script = document.createElement('script');
                     script.src = 'navbarhide.js';
                     document.head.appendChild(script);

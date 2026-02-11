@@ -16,7 +16,7 @@
                 .then(function(response){ return response.text(); })
                 .then(function(html){ 
                     document.getElementById('nav-placeholder').innerHTML = html;
-                    // Load navbarhide.js after navbar is in DOM
+                    // Load navbarhide.js
                     var script = document.createElement('script');
                     script.src = 'navbarhide.js';
                     document.head.appendChild(script);
@@ -24,8 +24,7 @@
         </script>
 
         <main class="page-content">
-        <div class="wrapper" 
-        style="display: flex; justify-content: center; align-items: center; min-height: 100vh;">
+        <div class="wrapper">
             
             <form action="index.html">
                 <h1>Login</h1>
@@ -45,19 +44,14 @@
                     required>
                 </div>
                 
-                <div class="remember-forgot" 
-                style="display: flex; align-items: center; gap: 8px;">
-                    
-                    <label 
-                    style="display: inline; margin: 0;">
-                    <input type="checkbox" 
-                    style="width: auto; margin: 0;"> Remember me</label>
-                    <a href="#" style="color: grey">Forgot password?</a>
+                <div class="remember-forgot">                   
+                    <label id="check"><input type="checkbox">&nbsp;Remember me</label>
+                    <a href="#" id="Reg">Forgot password?</a>
                 </div>
 
                 <button type="submit" class="login-btn">Submit</button>
                 <div class="register-link">
-                    <p>Don't have an account? <a href="register.html" style="color: grey">Register</a></p>
+                    <p>Don't have an account? <a href="register.html" id="Reg">Register</a></p>
                 </div>
             </form> 
         </div>
