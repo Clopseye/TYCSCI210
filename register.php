@@ -1,65 +1,64 @@
 <?php
-    $fname = $lname = $email = "";
+    $fname =  $lname = $email = $password = "";
 ?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html>
     <head>
-        <title>Log-In</title>
+        <title>Register</title>
         <link rel="stylesheet" href="styles.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     </head>
 
     <body>
+
         <div id="navbar">
             <?php include 'nav.php'; ?>
         </div>
         
         <script src="navbarhide.js"></script>
-        
+
         <main class="page-content">
         <div class="wrapper">
-            <form method="post" action="<?php echo htmlspecialchars("output.php"); ?>">
-                
+            
+            <form method ="post" action="<?php echo htmlspecialchars("output.php"); ?>">
+
                 <!-- Stop auto password fill on email field -->
                 <input type="text" name="prevent_autofill" id="prevent_autofill" value="" style="display:none;" aria-hidden="true">
                 <input type="password" name="password_fake" id="password_fake" value="" style="display:none;" aria-hidden="true">
-
-                <h1>Login</h1>
+                
+                <h1>Register</h1>
 
                 <div class="input-box">
+
+                    <!-- First name input box -->
                     <label for="fname">Full Name</label>
-                    <input type="text" id="fname" name="fname" placeholder="First Name"
+                    <input type="text" id="fname" name="fname" placeholder="Enter your first name"
                     pattern="^[a-zA-Z-' ]+$" title="Only letters and spaces allowed" required>
-                    
-                    <input type="text" id="lname" name="lname" placeholder="Last Name"
+
+                    <!-- Last name input box -->
+                    <input type="text" id="lname" name="lname" placeholder="Enter your last name"
                     pattern="^[a-zA-Z-' ]+$" title="Only letters and spaces allowed" required>
                 </div>
 
+                <!-- Email input box -->
                 <div class="input-box">
                     <label for="email">Email</label>
                     <input type="email" id="email" name="email" placeholder="Enter your email"
-                    autocomplete="username" required>
+                    autocomplete="email" required>
                 </div>
 
                 <div class="input-box">
                     <label for="password">Password</label>
-                    <input type="password" id="password" name="password" placeholder="Password"
+                    <input type="password" name="password" placeholder="Password"
                     pattern="^(?=.*[A-Z])(?=.*\d).{8,}$" title="Minimum 8 characters, at least one uppercase letter and one number"
                     autocomplete="current-password" required>
                 </div>
-                
-                <div class="remember-forgot">                   
-                    <label id="check"><input type="checkbox">&nbsp;Remember me</label>
-                    <a href="#" id="Reg">Forgot password?</a>
-                </div>
 
-                <button type="submit" class="login-btn">Submit</button>
-
-                <div class="register-link">
-                    <p>Don't have an account? <a href="register.php" id="Reg">Register</a></p>
-                </div>
+                <button type="submit" class="login-btn">Create Account</button>
             </form> 
         </div>
         </main>
+        
     </body>
 </html>
