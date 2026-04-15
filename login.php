@@ -27,17 +27,8 @@
                 <h1>Login</h1>
 
                 <div class="input-box">
-                    <label for="fname">Full Name</label>
-                    <input type="text" id="fname" name="fname" placeholder="First Name"
-                    pattern="^[a-zA-Z-' ]+$" title="Only letters and spaces allowed" required>
-                    
-                    <input type="text" id="lname" name="lname" placeholder="Last Name"
-                    pattern="^[a-zA-Z-' ]+$" title="Only letters and spaces allowed" required>
-                </div>
-
-                <div class="input-box">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" placeholder="Enter your email"
+                    <label for="username">Username</label>
+                    <input type="username" id="username" name="username" placeholder="Enter your username"
                     autocomplete="username" required>
                 </div>
 
@@ -48,7 +39,7 @@
                     autocomplete="current-password" required>
                 </div>
                 
-                <div class="remember-forgot">                   
+                <div class="remember-forgot">
                     <label id="check"><input type="checkbox">&nbsp;Remember me</label>
                     <a href="#" id="Reg">Forgot password?</a>
                 </div>

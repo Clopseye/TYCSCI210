@@ -1,3 +1,11 @@
+<?php 
+    session_start(); 
+
+    if (isset($_POST['confirm_order'])) {
+        unset($_SESSION['cart']);
+        $order_success = true;
+    }
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -18,8 +26,9 @@
             <section class="hero">
                 <div class="hero-overlay">
                     <h1>Home Page</h1>
-                    <p>Page body</p>
+                    <p>Hello, <?php echo $_SESSION['first_name'] ?? 'Guest'; ?>.</p>
                 </div>
+            </section>
         </main>
         
     </body>

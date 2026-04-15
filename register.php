@@ -21,7 +21,7 @@
         <main class="page-content">
         <div class="wrapper">
             
-            <form method ="post" action="<?php echo htmlspecialchars("output.php"); ?>">
+            <form method ="post" action="<?php echo htmlspecialchars("regoutput.php"); ?>">
 
                 <!-- Stop auto password fill on email field -->
                 <input type="text" name="prevent_autofill" id="prevent_autofill" value="" style="display:none;" aria-hidden="true">
@@ -41,6 +41,13 @@
                     pattern="^[a-zA-Z-' ]+$" title="Only letters and spaces allowed" required>
                 </div>
 
+                <!-- Username input box -->
+                <div class="input-box">
+                    <label for="username">Username</label>
+                    <input type="username" id="username" name="username" placeholder="Enter your username"
+                    autocomplete="username" required>
+                </div>
+
                 <!-- Email input box -->
                 <div class="input-box">
                     <label for="email">Email</label>
@@ -48,6 +55,7 @@
                     autocomplete="email" required>
                 </div>
 
+                <!-- Password input box -->
                 <div class="input-box">
                     <label for="password">Password</label>
                     <input type="password" name="password" placeholder="Password"

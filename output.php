@@ -1,72 +1,48 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Output Page</title>
-        <link rel="stylesheet" href="styles.css">
-    </head>
+<?php
+    session_start();
+    include 'datacon.php';
 
-    <body>
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $form_user = tinput($_POST["username"]);
+        $form_pass = $_POST["password"]; // Don't sanitize passwords; it can break them
 
-        <?php
-            if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                    
-                // Get and sanitize data
-                $fname = tinput($_POST["fname"]);
-                $lname = tinput($_POST["lname"]);
-                $email = tinput($_POST["email"]);
-                $password = $_POST["password"];
+        // Prepare statement to find the user
+        $stmt = $conn->prepare("SELECT CustomerID, Password FROM Authentication WHERE Username = ?");
+        $stmt->bind_param("s", $form_user);
+        $stmt->execute();
+        $result = $stmt->get_result();
 
-                // Check again
-                $errors = [];
+        if ($row = $result->fetch_assoc()) {
+            // Use password_verify to compare input to the database hash
+            if (password_verify($form_pass, $row['Password'])) {
+                
+                // Get name from the Customers table using ID
+                $custID = $row['CustomerID'];
+                $nameQuery = $conn->query("SELECT FirstName, LastName FROM Customers WHERE CustomerID = $custID");
+                $user = $nameQuery->fetch_assoc();
 
-                if (!preg_match("/^[a-zA-Z-' ]+$/", $fname)) {
-                    $errors[] = "First Name: Only letters and white space allowed.";
-                }
+                $_SESSION['userID'] = $custID;
+                $_SESSION['first_name'] = $user['FirstName'];
+                $_SESSION['username'] = $form_user;
+                $_SESSION['is_logged_in'] = true;
 
-                if (!preg_match("/^[a-zA-Z-' ]+$/", $lname)) {
-                    $errors[] = "Last Name: Only letters and white space allowed.";
-                }
-
-                if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                    $errors[] = "Invalid email format.";
-                }
-
-                if (!preg_match("/^(?=.*[A-Z])(?=.*\d).{8,}$/", $password)) {
-                    $errors[] = "Password does not meet security requirements.";
-                }
-
-                if (empty($errors)) {
-                    // Hash and show the data
-                    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-
-                    echo "<h1>Success</h1>";
-                    echo "<p><strong>First Name:</strong> $fname</p>";
-                    echo "<p><strong>Last Name:</strong> $lname</p>";
-                    echo "<p><strong>Email:</strong> $email</p>";
-                } else {
-                    // Show the errors found during the check
-                    echo "<h1>Validation Failed</h1>";
-                    echo "<ul style='color: red;'>";
-                    foreach ($errors as $error) {
-                        echo "<li>$error</li>";
-                    }
-                    echo "</ul>";
-                    echo "<a href='login.php' style='color: #3498db;'>Go back and try again</a>";
-                }
+                // Send to home page
+                header("Location: index.php");
+                exit();
+                
+                
             } else {
-                // If someone tries to access without logging in
-                echo "<h1>Access Denied</h1>";
-                echo "<p>Please submit the login form first.</p>";
+                echo "<h1>Login Failed</h1>";
+                echo "<p style='color: red;'>Invalid password.</p>";
             }
+        } else {
+            echo "<h1>Login Failed</h1>";
+            echo "<p style='color: red;'>Username not found.</p>";
+        }
+        $stmt->close();
+    }
 
-                function tinput($data) {
-                    $data = trim($data);
-                    $data = stripslashes($data);
-                    $data = htmlspecialchars($data);
-                    return $data;        
-                }
-        ?>
-
-    </body>
-</html>
+    function tinput($data) {
+        return htmlspecialchars(stripslashes(trim($data)));
+    }
+?>
